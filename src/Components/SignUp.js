@@ -9,6 +9,12 @@ function SignUp() {
     
     const signIn = (e) => {
         e.preventDefault()
+        auth.signInWithEmailAndPassword(
+            emailRef.current.value,
+            passwordlRef.current.value
+        ).then((authUser)=>{console.log(authUser)}).catch((error)=> {
+            alert(error.message)
+        })
     }
 
     const register = (e) => {
