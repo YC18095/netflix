@@ -37,7 +37,7 @@ function Banner() {
       }}
     >
       <div className="banner__contents">
-        <h1 className="banner__title">{movie.name}</h1>
+        <h1 className="banner__title">{movie?.name}</h1>
         <div className="banner__buttons">
           <button className="banner__button">Play</button>
           <button className="banner__button">My List</button>

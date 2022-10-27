@@ -2,11 +2,23 @@ import React from 'react';
 import './Login.css'
 import { useState, useEffect } from 'react'
 import SignUp from './SignUp';
+import { selectUser } from "../features/userSlice";
+import { useSelector } from 'react-redux'
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Login() {
-
+    const { user } = useSelector(selectUser)
     const [isSignIn, setIsSignIn] = useState(false)
+    const location = useLocation()
+    const navigate = useNavigate()
 
+    useEffect(() => {
+        if (!user) {
+            location.pathname = "/"
+            navigate('/')
+        }
+    }, [])
+    console.log('Location Login', location)
     const SignIn = () => {
         setIsSignIn(true)
     }
@@ -19,9 +31,9 @@ function Login() {
             <button onClick={SignIn} className='LoginScreen__button'> Sign In </button>
             <div className='loginScreen__gardient'></div>
 
-          
 
-                <div className='loginScreen__body'>
+
+            <div className='loginScreen__body'>
                 {isSignIn ? <SignUp /> :
                     <>
                         <h1>Unlimited films, TV programmers and more.</h1>
@@ -35,8 +47,8 @@ function Login() {
                                 </button>
                             </form>
                         </div>
-                    </> }
-                </div>
+                    </>}
+            </div>
         </div>
     );
 }

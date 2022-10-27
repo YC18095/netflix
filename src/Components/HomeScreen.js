@@ -4,8 +4,11 @@ import requests from "../ultil/request";
 import Banner from "./Banner";
 import NavBar from "./NavBar";
 import Row from "./Row";
+import {useLocation} from 'react-router-dom'
 
 function HomeScreen() {
+  let location = useLocation()
+  console.log('LOCATION HOME SCREEN', location)
   return (
     <div className="home_screen">
       <NavBar />
